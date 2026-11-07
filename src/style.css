@@ -4,6 +4,26 @@
   background:#130c2e;
   font-synthesis:none
 }
+.spark-icon,.ui-icon{
+  display:inline-block;
+  width:1em;
+  height:1em;
+  vertical-align:-.1em;
+  fill:currentColor
+}
+.back-arrow{
+  display:inline-block;
+  width:1.2em;
+  height:1.2em;
+  vertical-align:-.25em;
+  margin-right:.25em
+}
+.next-arrow svg{
+  display:inline-block;
+  width:1em;
+  height:1em;
+  vertical-align:-.12em
+}
 *{
   box-sizing:border-box
 }
@@ -651,6 +671,7 @@ textarea:focus,.custom-field input:focus{
 }
 .drink-illustration>span:first-child{
   font-size:64px;
+  color:#a47893;
   filter:drop-shadow(0 8px 5px #a27e8b66)
 }
 .drink-stars{
@@ -943,6 +964,13 @@ textarea:focus,.custom-field input:focus{
 }
 
 }
+@media(max-width:430px){
+  .review-letter .form-actions,.drink-actions{
+    flex-direction:column;
+    align-items:stretch
+  }
+  .review-letter .form-actions .button,.drink-actions .button{width:100%}
+}
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{
   animation-duration:.01ms!important;
@@ -999,6 +1027,18 @@ textarea:focus,.custom-field input:focus{
 }
 .envelope-stage.unsealing .stage-spark{
   animation:star-release .85s ease-out forwards
+}
+.no-webgl .envelope-stage::after{
+  content:'';
+  position:absolute;
+  inset:-25%;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 32%,#f8dda6 0 2px,transparent 4px),
+    radial-gradient(circle at 81% 27%,#ddb8fa 0 3px,transparent 5px),
+    radial-gradient(circle at 74% 85%,#f8dda6 0 2px,transparent 4px),
+    radial-gradient(circle at 32% 76%,#ddb8fa 0 2px,transparent 4px);
+  animation:star-breathe 2s ease-in-out infinite alternate
 }
 @keyframes envelope-release{
   0%{transform:rotate(-5deg) scale(1)}
@@ -1061,6 +1101,6 @@ textarea:focus,.custom-field input:focus{
   .envelope.unsealing:hover .envelope-flap{transform:rotateX(180deg);z-index:0}
 }
 @media(prefers-reduced-motion:reduce){
-  .envelope-stage,.stage-spark,.envelope-stage::before{animation:none!important}
+  .envelope-stage,.stage-spark,.envelope-stage::before,.no-webgl .envelope-stage::after{animation:none!important}
   .site-shell.sweeping::after{display:none}
 }

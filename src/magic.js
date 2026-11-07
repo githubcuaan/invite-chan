@@ -6,6 +6,7 @@ export function createMagic(canvas) {
   try {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
   } catch {
+    document.documentElement.classList.add('no-webgl');
     return { burst() {}, sweep() {}, dispose() {} };
   }
   renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
